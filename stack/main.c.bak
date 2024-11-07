@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define max 10
+int stack[max],i=0;
+
+int push(int item, int top){
+    if(top>=10){
+        printf("Overflow");
+    }else{
+        stack[top]=item;
+        top=top+1;
+    }
+    return top;
+}
+int pop(int top){
+    int item;
+    if(top<0){
+        printf("Underflow");
+    }else{
+        item=stack[top];
+        printf("\n%d has popped\n",item);
+        top=top-1;
+
+    }
+    return top;
+}
+
+void traverse(int top){
+    for(i=top;i>=0;i--){
+        if(stack[i]!=NULL){
+            printf("\n%d",stack[i]);
+        }
+    }
+}
+
+int main()
+{
+    int item,top=1;
+    top = push(5,top);
+    top = push(6,top);
+    top = push(7,top);
+    top = push(8,top);
+    //printf("\n%d : top",top);
+    top = pop(top);
+    top = pop(top);
+    top = pop(top);
+    top = pop(top);
+    //free(top);
+    //printf("\n%d : top",top);
+    traverse(top);
+}
+
